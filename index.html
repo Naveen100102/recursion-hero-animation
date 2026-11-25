@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffdfb">
+  <title>Weave animation</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fffdfb; }
+    main { position: fixed; inset: 0; }
+    canvas { display: block; width: 100%; height: 100%; }
+    button {
+      position: absolute;
+      right: max(1rem, env(safe-area-inset-right));
+      bottom: max(1rem, env(safe-area-inset-bottom));
+      background: #fffdfb;
+      color: #27282a;
+      border: 1px solid #cecac7;
+      font: 500 .78rem/1 ui-monospace, monospace;
+      padding: .7rem 1rem;
+      min-height: 44px;
+      cursor: pointer;
+    }
+    button:focus-visible { outline: 2px solid #ce0112; outline-offset: 3px; }
+  </style>
+  <script defer src="./gsap.min.js"></script>
+  <script defer src="./weave.js"></script>
+  <script defer src="./animation.js"></script>
+</head>
+<body>
+  <main>
+    <canvas role="img" aria-label="Pale blue bars settle into checks. Red steps reach a flower and red flowers open across the weave."></canvas>
+    <button type="button" aria-label="Pause animation">Pause</button>
+  </main>
+</body>
+</html>
