@@ -32,7 +32,8 @@ const settleStart = .40, settleEnd = .95;
 const weaveStart = settleEnd + .17;
 const redStart = weaveStart + .955, redEnd = redStart + 1.62;
 const flowerStart = redEnd;
-const duration = redStart + 4.25;
+const finalFrame = redStart + 4.25;
+const duration = 4;
 for (const flower of flowers.values()) {
   flower.distance = Math.hypot(flower.cx - firstFlower.cx, (flower.cy - firstFlower.cy) * 1.35);
 }
@@ -110,7 +111,7 @@ function cloth(time) {
 }
 
 const timeline = gsap.timeline({ paused: true, onComplete: updateButton });
-timeline.to(motion, { time: duration, duration, ease: "none", onUpdate: () => cloth(motion.time) });
+timeline.to(motion, { time: finalFrame, duration, ease: "none", onUpdate: () => cloth(motion.time) });
 
 function updateButton() {
   const action = timeline.progress() === 1 ? "Replay" : timeline.paused() ? "Play" : "Pause";
