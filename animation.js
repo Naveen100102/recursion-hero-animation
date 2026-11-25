@@ -28,9 +28,9 @@ redSteps.sort((a, b) => b.col - a.col || a.row - b.row);
 // The final step meets the upper-right corner of the first flower's top petal.
 const tip = redSteps.at(-1);
 const firstFlower = flowers.get((tip.col - 1) + "," + (tip.row + 2));
-const settleStart = .94, settleEnd = 2.24;
-const weaveStart = settleEnd + .4;
-const redStart = weaveStart + 2.25, redEnd = redStart + 1.62;
+const settleStart = .80, settleEnd = 1.90;
+const weaveStart = settleEnd + .34;
+const redStart = weaveStart + 1.91, redEnd = redStart + 1.62;
 const flowerStart = redEnd;
 const duration = redStart + 4.25;
 for (const flower of flowers.values()) {
@@ -58,7 +58,7 @@ function resize() {
 function cloth(time) {
   const { width, height, x, y, unit, first } = layout;
   square(0, 0, width, height, colors["."]);
-  const drop = between(time, 0, 1.05 * .87);
+  const drop = between(time, 0, .78);
   const progress = clamp((time - settleStart) / (settleEnd - settleStart));
   const settle = between(progress, 0, .96);
   const stepsInPlace = between(progress, .2, 1);
@@ -73,9 +73,9 @@ function cloth(time) {
 
   // Keep each crossing centred in its own bar as the next row opens.
   for (let row = 21; row < weave.length; row++) {
-    const start = weaveStart + (row - 21) * .104;
+    const start = weaveStart + (row - 21) * .088;
     if (time <= start) break;
-    const size = unit * between(time, start, start + .34);
+    const size = unit * between(time, start, start + .29);
     const inset = (unit - size) / 2;
     for (let col = first; col < 60; col++) {
       const pixel = weave[row][col];
